@@ -24,7 +24,7 @@ class Solution {
             prev = head;
             head = head.next;
         }
-        System.out.println(maximaStore);
+        //System.out.println(maximaStore);
         int ans[] = {-1, -1};
         if(maximaStore.isEmpty() || maximaStore.size() == 1) {
             return ans;
