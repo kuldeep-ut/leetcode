@@ -6,6 +6,9 @@ class Solution {
                 cnt++;
             }
         }
-        return cnt;
+        if(n < 1000){
+            return 0;
+        }
+        return (n/1000 - 1)*1000 + n%1000+1;
     }
 }
