@@ -1,21 +1,25 @@
 class Solution {
     public int longestValidParentheses(String s) {
-        Deque<Integer> stack = new ArrayDeque<>();
-        stack.push(-1);
-        int best = 0;
-
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') {
-                stack.push(i);
-            } else {
-                stack.pop();
-                if (stack.isEmpty()) {
-                    stack.push(i);               // new base: last unmatched ')'
-                } else {
-                    best = Math.max(best, i - stack.peek());
-                }
+        int left = 0, right = 0, maxRes = -1;
+        for(int i = 0; i<s.length(); i++){
+            if(s.charAt(i) == '('){
+                left++;
+            }else{
+                right++;
+                if(right == left) maxRes = Math.max(2*left, maxRes);
+                else if(right > left) left = right = 0;
             }
         }
-        return best;
+        left = right = 0;
+        for(int i = s.length()-1; i>=0; i--){
+            if(s.charAt(i) == ')'){
+                right++;
+            }else{
+                left++;
+                if(right == left) maxRes = Math.max(2*left, maxRes);
+                else if(left > right) left = right = 0;
+            }
+        }
+        return maxRes == -1 ? 0 : maxRes;
     }
 }
