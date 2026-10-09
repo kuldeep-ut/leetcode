@@ -8,7 +8,7 @@ class Solution {
             }
         }
         String str = replacedStr.replace("1", ")");
-        System.out.println(str);
+        //System.out.println(str);
         int left = 0, right = 0, ans = 0;
         for(int i = 0; i < str.length(); i++){
             if(str.charAt(i) == '('){
